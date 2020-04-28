@@ -6,7 +6,7 @@ namespace _1Laboratorio
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("LABORATORIO1 ");
+            Console.WriteLine("LABORATORIOs1 ");
 
         }
     }
