@@ -57,6 +57,8 @@ namespace _1Laboratorio
                             X = X + 1;
                         }
                     }
+                    else
+                    { }
                    
                 }
                 linea = Leer.ReadLine();
