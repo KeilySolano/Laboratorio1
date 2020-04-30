@@ -39,33 +39,30 @@ namespace _1Laboratorio
             string linea = "contacto";
             Leer = File.OpenText(rutaadmin);
             linea = Leer.ReadLine();
-            while (linea != null)
+            char x = 'f';
+            do 
+                
             {
-                string[] Vec = linea.Split('*');
-                int X = 0;
-                if (X == 1)
+                while (linea != null)
                 {
-                    Console.WriteLine("ok");
-                }
-                else
-                {
-                    if (Vec[0] == nombre)
-                    {
-                        if (Vec[1] == contraseña)
-                        {
-                            Console.WriteLine("Datos correctos");
-                            X = X + 1;
-                        }
-                    }
-                    else
-                    { }
-                   
-                }
-                linea = Leer.ReadLine();
-            }
-            Console.WriteLine("Datos incorrectos");
+                    string[] Vec = linea.Split('*');
 
-            Leer.Close();
+                    if (Vec[1] == contraseña)
+                    {
+                        x = 'v';
+                    }
+                    else 
+                    {
+                        x = 'f';
+                        int ca = 1;
+                    }
+                    
+                       
+                        linea = Leer.ReadLine();
+                    
+                }
+            }
+            while (x=='f');
             return linea;
         }
     }

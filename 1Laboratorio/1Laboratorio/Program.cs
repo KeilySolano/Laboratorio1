@@ -15,6 +15,7 @@ namespace _1Laboratorio
             if (c==1)
             {
                 Admin.iniciarsecion();
+                Console.Clear();
                 Admin.Menu();
             }
             else 

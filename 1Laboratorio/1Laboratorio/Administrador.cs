@@ -14,6 +14,7 @@ namespace _1Laboratorio
             if (x == 1)
             {
                 Console.WriteLine("Inventario");
+                
             }
             else if (x == 2)
             {
