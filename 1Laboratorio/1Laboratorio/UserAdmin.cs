@@ -13,17 +13,21 @@ namespace _1Laboratorio
         static StreamWriter Escribir;
         public void iniciarsecion()
         {
-            BContacto(Llenar("Usuario"), Llenar("Contraseña")); ;
+            inisecion(Llenar("Usuario"), Llenar("Contraseña")); ;
             Console.ReadKey();
         }
         public void GuardarUser()
         {
-            GContacto(Llenar("Nombre"), Llenar("Contraseña"));
+            GUser(Llenar("Nombre"), Llenar("Contraseña"));
         }
-
+        public void Busuario()
+        {
+            Console.WriteLine("--------------EN PROCESO ");
+        }
+      
                              //ESTRUCTURA//
 
-        static void GContacto(string nombre, string apellido)
+        static void GUser(string nombre, string apellido)
         {
             Escribir = File.AppendText(rutaadmin);
             Escribir.WriteLine(nombre + "*" + apellido);
@@ -34,7 +38,7 @@ namespace _1Laboratorio
             Console.Write("Ingrese" + dato + ":");
             return (Console.ReadLine());
         }
-        static string BContacto(string nombre, string contraseña)
+        static string inisecion(string nombre, string contraseña)
         {
             string linea = "contacto";
             Leer = File.OpenText(rutaadmin);
@@ -54,7 +58,7 @@ namespace _1Laboratorio
                     else 
                     {
                         x = 'f';
-                        int ca = 1;
+                        
                     }
                     
                        
