@@ -6,7 +6,7 @@ namespace _1Laboratorio
 {
     class Administrador:UserAdmin
     {
-        
+        static Inventario Inven = new Inventario();
         public void Menu()
         {
             char c = 's';
@@ -18,11 +18,12 @@ namespace _1Laboratorio
                 if (x == 1)
                 {
                     Console.WriteLine("Inventario");
+                    Inven.GProducto();
 
                 }
                 else if (x == 2)
                 {
-                    GuardarUser();
+                    CrearUser();
                 }
                 else if (x == 3)
                 {
@@ -35,6 +36,7 @@ namespace _1Laboratorio
 
                 Console.WriteLine("Desea Regresar al Menu s/n");
                 c = char.Parse(Console.ReadLine());
+                Console.Clear();
             }
             while (c != 'n');          
         }
