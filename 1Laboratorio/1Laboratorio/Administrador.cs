@@ -18,7 +18,7 @@ namespace _1Laboratorio
                 if (x == 1)
                 {
                     Console.WriteLine("Inventario");
-                    Inven.GProducto();
+                    Inven.MostrarProducto();
 
                 }
                 else if (x == 2)
