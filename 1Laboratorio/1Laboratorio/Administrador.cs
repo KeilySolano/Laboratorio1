@@ -31,7 +31,7 @@ namespace _1Laboratorio
                 }
                 else
                 {
-                    Console.WriteLine("Ver Facturas");
+                    Console.WriteLine("EN PROCESO");
                 }
 
                 Console.WriteLine("Desea Regresar al Menu s/n");
