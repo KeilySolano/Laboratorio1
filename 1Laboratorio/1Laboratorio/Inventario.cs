@@ -7,7 +7,6 @@ namespace _1Laboratorio
 {
     class Inventario
     {
-        static string inventario = "Inventario.txt";
         static StreamReader Leer;
         static StreamWriter Escribir;
 
@@ -43,15 +42,22 @@ namespace _1Laboratorio
         }
 
        
-        static void Modificar()
+        public void Modificar()
         {
+            string can = "Cantida:";
+            string pre = "Precio";
+            string pro = "El producto es:";
+            string to = "El total es:";
             string linea = "", CantTemp = "";
-            Console.Write("ingrese nombre del producto que desea agregar:");
+            Console.Write(pro);
             string producto = Console.ReadLine();
-            Console.WriteLine("Cantidad");
+            Console.WriteLine(can);
             double cantidad = double.Parse(Console.ReadLine());
-            Console.Write("Precio o nuevo precio:");
+            Console.Write(pre);
             double precio = double.Parse(Console.ReadLine());
+            Console.WriteLine(to);
+            double total = cantidad * precio;
+
             using (Escribir=new StreamWriter("InventarioTemp.txt"))
             {
                 using (Leer = new StreamReader("Inventario.txt"))
@@ -72,15 +78,14 @@ namespace _1Laboratorio
                 }
             }
             File.Delete("Invenatario.txt");
-            File.Move("InventarioTemp.txt","Inventario.txt");
+
+            File.Move("InventarioTemp.txt","InventarioNuevo.txt");
             Leer.Close();
             Escribir.Close();
             Escribir=File.AppendText("Inventario.txt");
-            Escribir.WriteLine(producto+"*"+cantidad+"*"+precio);
+            Escribir.WriteLine(pro+producto+"*"+can+cantidad+"*"+pre+precio+"*"+to+total);
             Escribir.Close();                    
         }
-
-
     }
 }
 

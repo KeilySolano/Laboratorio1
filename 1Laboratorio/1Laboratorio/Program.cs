@@ -6,6 +6,7 @@ namespace _1Laboratorio
     class Program
     {
         static Administrador Admin = new Administrador();
+        static Trabajador Traba = new Trabajador();
         static void Main(string[] args)
         {
             Console.WriteLine("LOS PATOS");
@@ -20,7 +21,9 @@ namespace _1Laboratorio
             }
             else 
             {
-                Console.WriteLine("EN PROCESO");
+                Traba.iniciarsecion();
+                Console.Clear();
+                Traba.Menu();
             }
             
         }
