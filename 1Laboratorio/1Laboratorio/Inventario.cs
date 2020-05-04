@@ -9,6 +9,7 @@ namespace _1Laboratorio
     {
         static string inventario = "Inventario.txt";
         static StreamReader Leer;
+        static StreamWriter Escribir;
 
         public void GProducto()
         {
@@ -41,29 +42,45 @@ namespace _1Laboratorio
             Leer.Close();
         }
 
-        static string Llenar(string dato)
+       
+        static void Modificar()
         {
-            Console.Write("Ingrese" + dato + ":");
-            return (Console.ReadLine());
-        }
-        static string BContacto(string produc)
-        {
-            string linea = "contacto";
-            Leer = File.OpenText(inventario);
-            linea = Leer.ReadLine();
-            while (linea != null)
+            string linea = "", CantTemp = "";
+            Console.Write("ingrese nombre del producto que desea agregar:");
+            string producto = Console.ReadLine();
+            Console.WriteLine("Cantidad");
+            double cantidad = double.Parse(Console.ReadLine());
+            Console.Write("Precio o nuevo precio:");
+            double precio = double.Parse(Console.ReadLine());
+            using (Escribir=new StreamWriter("InventarioTemp.txt"))
             {
-                string[] Vec = linea.Split('*');
-                if (Vec[1] == produc)
+                using (Leer = new StreamReader("Inventario.txt"))
                 {
-                    Console.WriteLine("Producto encontrado:" + Vec[0] + "-" + Vec[1] + "-" + Vec[2] + "-");
+                    while ((linea=Leer.ReadLine())!=null)
+                    {
+                        string[] datos = linea.Split('*');
+                        if (datos[0] != producto)
+                        {
+                            Escribir.WriteLine(linea);
+                        }
+                        else
+                        {
+                            CantTemp = datos[1];
+                            cantidad += double.Parse(CantTemp);
+                        }
+                    }
                 }
-                linea = Leer.ReadLine();
             }
+            File.Delete("Invenatario.txt");
+            File.Move("InventarioTemp.txt","Inventario.txt");
             Leer.Close();
-            return linea;
+            Escribir.Close();
+            Escribir=File.AppendText("Inventario.txt");
+            Escribir.WriteLine(producto+"*"+cantidad+"*"+precio);
+            Escribir.Close();                    
         }
 
 
     }
 }
+
