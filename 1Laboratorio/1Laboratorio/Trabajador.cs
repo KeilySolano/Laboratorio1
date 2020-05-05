@@ -11,7 +11,6 @@ namespace _1Laboratorio
         static Facturacion Fact = new Facturacion();
         static string rutatraba = "TrabajoUser.txt";
         static StreamReader Leer;
-        static StreamWriter Escribir;
 
         public void Menu()
         {
@@ -23,21 +22,12 @@ namespace _1Laboratorio
                 int x = int.Parse(Console.ReadLine());
                 if (x == 1)
                 {
-                    Console.WriteLine("Que desea hacer\n1.Ingresar Producto\n2.Modificar un Producto");
-                    int p = int.Parse(Console.ReadLine());
-                    if (p==1)
-                    {
-                        Inven.GProducto();
-                    }
-                    else 
-                    {
-                        Inven.Modificar();
-                    }
+                    Inven.Modificar();                   
                 }
-                else 
+                else
                 {
                     Fact.Facturas();
-                }                            
+                }
                 Console.WriteLine("Desea Regresar al Menu s/n");
                 c = char.Parse(Console.ReadLine());
                 Console.Clear();

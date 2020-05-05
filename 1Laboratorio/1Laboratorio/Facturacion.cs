@@ -15,7 +15,7 @@ namespace _1Laboratorio
         {
             string CantTem = "", Correlativo = "", Producto = "", Cliente = "", Nit = "", Fecha = "", Detalle = "", MontoTotal = "", continuar = "Si", Precio = "";
             double TotalT = 0;
-            int casillasNo=0,x=0,w=0,cant = 0;
+            int casillasNo=0,x=0,cant = 0;
             Console.WriteLine("Inventario actual:");
             string line = "",linea="";
             using (Leer=new StreamReader("Inventario.txt"))
