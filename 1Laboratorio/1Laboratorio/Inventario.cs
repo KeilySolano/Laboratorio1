@@ -65,7 +65,7 @@ namespace _1Laboratorio
                 Console.WriteLine("Desea volver a cargar inventario");
                 res = char.Parse(Console.ReadLine());
                 Console.Clear();
-                
+
             }
             while (res != 'n');
         }   
