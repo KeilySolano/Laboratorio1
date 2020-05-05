@@ -13,16 +13,18 @@ namespace _1Laboratorio
         static Trabajador traba = new Trabajador();
         public void Facturas()
         {
-            string CantTem = "", Correlativo = "", Producto = "", Cliente = "", Nit = "", Fecha = "", Detalle = "", MontoTotal = "", continuar = "Si", Precio = "";
+            string CantTem = "", Correlativo = "", Producto = "", Cliente = "", Nit = "", Fecha = "", Detalle = "", MontoTotal = "", Precio = "",  linea2 = "";
+            ;
             double TotalT = 0;
-            int casillasNo=0,x=0,cant = 0;
+            char res = 's';
+            int Cn=0,x=0,cant = 0;
             Console.WriteLine("Inventario actual:");
-            string line = "",linea="";
+            string linea1 = "",linea3="";
             using (Leer=new StreamReader("Inventario.txt"))
             {
-                while ((linea=Leer.ReadLine())!=null)
+                while ((linea3=Leer.ReadLine())!=null)
                 {
-                    string[] datos = linea.Split('*');
+                    string[] datos = linea3.Split('*');
                     Console.WriteLine("Producto:"+datos[1]+""+"Cantidad"+datos[3]+""+"Precio actual"+datos[5]+"Precio:"+datos[7]);
                 }
 
@@ -53,12 +55,12 @@ namespace _1Laboratorio
                 {
                     using (Leer = new StreamReader("Inventario.txt"))
                     {
-                        while ((line = Leer.ReadLine()) != null)
+                        while ((linea1 = Leer.ReadLine()) != null)
                         {
-                            string[] datos = line.Split('*');
+                            string[] datos = linea1.Split('*');
                             if (datos[0] != Producto)
                             {
-                                Escribir.WriteLine(line);
+                                Escribir.WriteLine(linea1);
                             }
                             else if (datos[0] == Producto)
                             {
@@ -73,14 +75,12 @@ namespace _1Laboratorio
                 Leer.Close();
                 Escribir.Close();
                 Escribir = File.AppendText("Inventario.txt");
-                //if (cant>0)
-                Escribir.WriteLine("Desea Agregar otro producto");
-                continuar = Console.ReadLine();
+                Escribir.WriteLine("Desea Agregar otro producto\nIngrese s/n");
+                res = char.Parse(Console.ReadLine());
             }
-            while (continuar == "SI" || continuar == "si");
-            MontoTotal = ("El total es de:"+ TotalT);
+            while (res!='n');
+            MontoTotal = ("El total es :"+ TotalT);
 
-            string linea2 = "";
             Leer = File.OpenText("Correlativos_Facturas.txt");
             while (linea2 != null)
             {
@@ -102,13 +102,13 @@ namespace _1Laboratorio
             Escribir.WriteLine("Nit:"+Nit);
             Escribir.WriteLine("Detalles:");
             string[] detalles = Detalle.Split("*");
-            casillasNo = detalles.Length;
+            Cn = detalles.Length;
             do
             {
                 Escribir.WriteLine(detalles[x]);
                 x = x + 1;
             }
-            while (casillasNo>x);
+            while (Cn>x);
             Escribir.WriteLine(MontoTotal);
             Escribir.Close();
                

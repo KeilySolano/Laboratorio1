@@ -31,20 +31,28 @@ namespace _1Laboratorio
 
         static void GUser(string nombre, string apellido)
         {
-            Console.WriteLine("Que tipo de usuario desea crear\n 1.Administrador\n2.Tranajador");
-            int x = int.Parse(Console.ReadLine());
-            if (x==1)
+            char res = 's';
+            do
             {
-                Escribir = File.AppendText(rutaadmin);
-                Escribir.WriteLine(nombre + "*" + apellido);
-                Escribir.Close();
+                Console.WriteLine("Que tipo de usuario desea crear\n 1.Administrador\n2.Tranajador");
+                int x = int.Parse(Console.ReadLine());
+                if (x == 1)
+                {
+                    Escribir = File.AppendText(rutaadmin);
+                    Escribir.WriteLine(nombre + "*" + apellido);
+                    Escribir.Close();
+                }
+                else
+                {
+                    Escribir = File.AppendText(rutatraba);
+                    Escribir.WriteLine(nombre + "*" + apellido);
+                    Escribir.Close();
+                }
+                Console.WriteLine("Desea volver a ver otra factura\nIngrese s/n");
+                res = char.Parse(Console.ReadLine());
+                Console.Clear();
             }
-            else
-            {
-                Escribir = File.AppendText(rutatraba);
-                Escribir.WriteLine(nombre + "*" + apellido);
-                Escribir.Close();
-            }
+            while (res!='n');
         }
         static string Llenar(string dato)
         {
@@ -82,39 +90,47 @@ namespace _1Laboratorio
         }
         static string MosUser()
         {
-            string linea = "contacto";
-            Console.WriteLine("Desea ver:\n1.Administrador\n2.Trabajador");
-            int x = int.Parse(Console.ReadLine());
-            if (x==1)
+            char res= 's';
+            do
             {
-                
-                Leer = File.OpenText(rutaadmin);
-                linea = Leer.ReadLine();
-                while (linea != null)
+                string linea = "contacto";
+                Console.WriteLine("Desea ver:\n1.Administrador\n2.Trabajador");
+                int x = int.Parse(Console.ReadLine());
+                if (x == 1)
                 {
-                    string[] Vec = linea.Split('*');
 
-                    Console.WriteLine(Vec[0] + "-" + Vec[1] + "-");
-
+                    Leer = File.OpenText(rutaadmin);
                     linea = Leer.ReadLine();
+                    while (linea != null)
+                    {
+                        string[] Vec = linea.Split('*');
+
+                        Console.WriteLine(Vec[0] + "-" + Vec[1] + "-");
+
+                        linea = Leer.ReadLine();
+                    }
                 }
-            }
-            else
-            {
-                
-                Leer = File.OpenText(rutatraba);
-                linea = Leer.ReadLine();
-                while (linea != null)
+                else
                 {
-                    string[] Vec = linea.Split('*');
 
-                    Console.WriteLine(Vec[0] + "-" + Vec[1] + "-");
-
+                    Leer = File.OpenText(rutatraba);
                     linea = Leer.ReadLine();
+                    while (linea != null)
+                    {
+                        string[] Vec = linea.Split('*');
+
+                        Console.WriteLine(Vec[0] + "-" + Vec[1] + "-");
+
+                        linea = Leer.ReadLine();
+                    }
                 }
+                Console.WriteLine("Desea volver a ver otra factura\nIngrese s/n");
+                res = char.Parse(Console.ReadLine());
+                Console.Clear();
+                return linea;
+
             }
-            Leer.Close();
-            return linea;
+            while (res!='n');
         }
     }
 }

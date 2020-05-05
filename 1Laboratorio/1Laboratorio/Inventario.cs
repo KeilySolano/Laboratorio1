@@ -12,11 +12,7 @@ namespace _1Laboratorio
         static Trabajador Traba = new Trabajador();
         static string inventariotemp = "InventarioTemp.txt";
 
-        public void GProducto()
-        {
-
-            
-        }
+        
         public void MostrarProducto()
         {
             StreamReader Leer;
@@ -29,16 +25,16 @@ namespace _1Laboratorio
         public void Modificar()
         {
             string linea = "",Producto = "",CanTemp="";
-            double cantidad, precio;
+            double Cantidad, Precio;
             char res = 's';
             do
             {
                 Console.Write("Ingrese el producto");
                 Producto = Console.ReadLine();
                 Console.Write("Ingrese cantidad:");
-                cantidad = double.Parse(Console.ReadLine());
+                Cantidad = double.Parse(Console.ReadLine());
                 Console.Write("Ingrese precio:");
-                precio = double.Parse(Console.ReadLine());
+                Precio = double.Parse(Console.ReadLine());
                 using (escribir = new StreamWriter(inventariotemp))
                 {
                     using (Leer = new StreamReader("Inventario.txt"))
@@ -53,7 +49,7 @@ namespace _1Laboratorio
                             else
                             {
                                 CanTemp = datos[1];
-                                cantidad += double.Parse(CanTemp);
+                                Cantidad += double.Parse(CanTemp);
                             }
                         }
                     }
@@ -63,7 +59,7 @@ namespace _1Laboratorio
                 Leer.Close();
                 escribir.Close();
                 escribir = File.AppendText("Inventario.txt");
-                escribir.WriteLine(Producto + "*" + cantidad + "*" + precio);
+                escribir.WriteLine(Producto + "*" + Cantidad + "*" + Precio);
                 escribir.Close();
                 Console.WriteLine("Inventario cargado");
                 Console.WriteLine("Desea volver a cargar inventario");
