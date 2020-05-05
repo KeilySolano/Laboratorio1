@@ -32,7 +32,7 @@ namespace _1Laboratorio
                 }
                 else
                 {
-                    Fac.BuscarFactura();
+                    Fac.MostrarFactura();
                 }
 
                 Console.WriteLine("Desea Regresar al Menu s/n");

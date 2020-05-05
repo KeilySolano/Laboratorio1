@@ -114,45 +114,49 @@ namespace _1Laboratorio
                
         }
 
-        public void BuscarFactura()
+        public void MostrarFactura()
         {
-            
-            string correlativo = "";
-            int encontrado = 1;
-            Console.WriteLine("Correlativos de facturas existentes");
-            string linea = "", line = "", line2 = "";
-            using (Leer = new StreamReader("Correlativos_Facturas.txt"))
+            char res = 's';
+            do
             {
-                while ((linea=Leer.ReadLine())!=null)
+                string correlativo = "";
+                int encontrado = 1;
+                Console.WriteLine("Correlativo de facturas existentes");
+                string linea = "", linea2 = "", line = "";
+                using (Leer = new StreamReader("Correlativos_Facturas.txt"))
                 {
-                    Console.WriteLine(line);
-                }
-            }
-            Leer.Close();
-            Console.WriteLine("Ingrese el correlativo de la factura");
-            correlativo = Console.ReadLine();
-            Leer = File.OpenText("Correlativos_Facturas.txt");
-            while ((line=Leer.ReadLine())!=null)
-            {
-                if (line == correlativo)
-                {
-                    encontrado++;
-                    Console.WriteLine("Factura Encontrada");
-                    Lector = File.OpenText("Factura"+correlativo+".txt");
-                    while ((line2=Lector.ReadLine())!=null)
+                    while ((linea = Leer.ReadLine()) != null)
                     {
-                        Console.WriteLine(line2);
+                        Console.WriteLine(linea);
                     }
                 }
+                Leer.Close();
+                Console.Write("Ingrese el correlativo que desea ver");
+                correlativo = Console.ReadLine();
+                Leer = File.OpenText("Correlativos_Facturas.txt");
+                while ((linea = Leer.ReadLine()) != null)
+                {
+                    if (line == correlativo)
+                    {
+                        encontrado++;
+                        Console.WriteLine("Factura encontrada");
+                        Lector = File.OpenText("Factura" + correlativo + ".txt");
+                        while ((linea2 = Lector.ReadLine()) != null)
+                        {
+                            Console.WriteLine(linea2);
+                        }
+                    }
+                }
+                if (encontrado == 1)
+                {
+                    Console.WriteLine("Esta Factura no existe");
+                }
+                Leer.Close();
+                Console.WriteLine("Desea volver a ver otra factura\nIngrese s/n");
+                res = char.Parse(Console.ReadLine());
+                Console.Clear();
             }
-            if (encontrado==1)
-            {
-                Console.WriteLine("esta factura no existe");
-            }
-            Leer.Close();
-            Console.Clear();
-            
-            
+            while (res!='n');
         }
     }
 }
