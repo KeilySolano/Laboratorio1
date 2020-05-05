@@ -13,19 +13,17 @@ namespace _1Laboratorio
         static Trabajador traba = new Trabajador();
         public void Facturas()
         {
-            string CantTem = "", Correlativo = "", Producto = "", Cliente = "", Nit = "", Fecha = "", Detalle = "", MontoTotal = "", Precio = "",  linea2 = "";
-            ;
+            string CantTem = "", Correlativo = "", Producto = "", Cliente = "", Nit = "", Fecha = "", Detalle = "", MontoTotal = "", Precio = "",  linea2 = "";            
             double TotalT = 0;
             char res = 's';
             int Cn=0,x=0,cant = 0;
-            Console.WriteLine("Inventario actual:");
-            string linea1 = "",linea3="";
+            string linea1 = "", linea3 = "";
             using (Leer=new StreamReader("Inventario.txt"))
             {
                 while ((linea3=Leer.ReadLine())!=null)
                 {
                     string[] datos = linea3.Split('*');
-                    Console.WriteLine("Producto:"+datos[1]+""+"Cantidad"+datos[3]+""+"Precio actual"+datos[5]+"Precio:"+datos[7]);
+                    Console.WriteLine("Producto:"+datos[0]+""+"Cantidad"+datos[1]+""+"Precio actual"+datos[2]+"Precio:"+datos[3]);
                 }
 
             }
@@ -121,8 +119,8 @@ namespace _1Laboratorio
             {
                 string correlativo = "";
                 int encontrado = 1;
-                Console.WriteLine("Correlativo de facturas existentes");
                 string linea = "", linea2 = "", line = "";
+                Console.WriteLine("Correlativo de facturas existentes");               
                 using (Leer = new StreamReader("Correlativos_Facturas.txt"))
                 {
                     while ((linea = Leer.ReadLine()) != null)

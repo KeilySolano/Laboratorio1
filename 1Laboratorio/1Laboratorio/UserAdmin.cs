@@ -14,7 +14,7 @@ namespace _1Laboratorio
         static StreamWriter Escribir;
         public void iniciarsecion()
         {
-            inisecion(Llenar("Usuario"), Llenar("Contraseña")); ;
+            inisecion(Llenar("Usuario"), Llenar("Contraseña")); 
             
         }
         public void CrearUser()
@@ -32,10 +32,11 @@ namespace _1Laboratorio
         static void GUser(string nombre, string apellido)
         {
             char res = 's';
+            int x;
             do
             {
-                Console.WriteLine("Que tipo de usuario desea crear\n 1.Administrador\n2.Tranajador");
-                int x = int.Parse(Console.ReadLine());
+                Console.WriteLine("Que tipo de usuario desea crear\n 1.Administrador\n2.Trabajador");
+                 x = int.Parse(Console.ReadLine());
                 if (x == 1)
                 {
                     Escribir = File.AppendText(rutaadmin);
@@ -91,11 +92,12 @@ namespace _1Laboratorio
         static string MosUser()
         {
             char res= 's';
+            int x;
             do
             {
                 string linea = "contacto";
                 Console.WriteLine("Desea ver:\n1.Administrador\n2.Trabajador");
-                int x = int.Parse(Console.ReadLine());
+                 x = int.Parse(Console.ReadLine());
                 if (x == 1)
                 {
 

@@ -36,7 +36,7 @@ namespace _1Laboratorio
         }
         public void iniciarsecion()
         {
-            inisecion(Llenar("Usuario"), Llenar("Contraseña")); ;
+            inisecion(Llenar("Usuario"), Llenar("Contraseña")); 
 
         }
         static string Llenar(string dato)
