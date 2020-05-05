@@ -7,6 +7,7 @@ namespace _1Laboratorio
     class Administrador:UserAdmin
     {
         static Inventario Inven = new Inventario();
+        static Facturacion Fac = new Facturacion();
         public void Menu()
         {
             char c = 's';
@@ -31,7 +32,7 @@ namespace _1Laboratorio
                 }
                 else
                 {
-                    Console.WriteLine("EN PROCESO");
+                    Fac.BuscarFactura();
                 }
 
                 Console.WriteLine("Desea Regresar al Menu s/n");
